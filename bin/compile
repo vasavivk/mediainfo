@@ -1,1 +1,27 @@
+#!/bin/sh
 
+indent() {
+  sed -u 's/^/       /'
+}
+
+#MediaInfo
+echo "-----> Installing MediaInfo"
+MI_Ver="23.07"
+BUILD_DIR=$1
+VENDOR_DIR="vendor/mediainfo"
+DOWNLOAD_URL="https://github.com/TheKVT/MediaInfo-Buildpack/raw/master/mediainfo_$(MI_Ver).tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $VENDOR_DIR
+cd $VENDOR_DIR
+
+curl -L --silent $DOWNLOAD_URL | tar xz
+echo "exporting to PATH" | indent
+PROFILE_PATH="$BUILD_DIR/.profile.d/mediainfo.sh"
+mkdir -p $(dirname $PROFILE_PATH)
+echo 'export PATH="$PATH:vendor/mediainfo/bin"' >> $PROFILE_PATH
+rm mediainfo_$(MI_Ver).tar.gz
+
+echo "-----> Installed MediaInfo Sucessfully ;)"
