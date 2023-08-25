@@ -7,11 +7,11 @@ A Heroku buildpack to download latest [MediaInfo](https://mediaarea.net/en/Media
 -   Add the following link in your `.buildpacks` file:
 
 ```
-https://github.com/thekvt/MediaInfo-buildpack.git
+https://github.com/thekvt/MediaInfo-Buildpack.git
 ```
 
 -   Or use the following command via heroku CLI:
 
 ```
-heroku buildpacks:add https://github.com/thekvt/MediaInfo-buildpack.git
+heroku buildpacks:add https://github.com/thekvt/MediaInfo-Buildpack.git
 ```
